@@ -105,8 +105,7 @@ public:
 
 	void flashFrame();
 
-protected:
-
+protected: 
 	map<string, Alembic::AbcGeom::OObject*> object_map;
 	Alembic::AbcGeom::OArchive archive;
 

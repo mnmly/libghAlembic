@@ -183,7 +183,6 @@ void Points::draw()
 
 void PolyMesh::get(OPolyMeshSchema &schema) const
 {
-   
     OV2fGeomParam::Sample uvsamp( V2fArraySample( mesh.uvs ), kFacevaryingScope );
     // indexed normals
     ON3fGeomParam::Sample nsamp( N3fArraySample( mesh.normals), kFacevaryingScope );
