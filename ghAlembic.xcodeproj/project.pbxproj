@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		99858F982308707A0011F2F9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99858F972308707A0011F2F9 /* main.cpp */; };
 		99858F9F230871190011F2F9 /* libghAlembic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 99EC38492307043D007D68B1 /* libghAlembic.dylib */; };
+		99858FB323089C090011F2F9 /* libAlembic.1.7.11.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 99858FB023088BF70011F2F9 /* libAlembic.1.7.11.dylib */; };
 		99EC385A2307046A007D68B1 /* ofxAlembicUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 99EC38512307046A007D68B1 /* ofxAlembicUtil.h */; };
 		99EC385B2307046A007D68B1 /* ofxAlembicUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99EC38522307046A007D68B1 /* ofxAlembicUtil.cpp */; };
 		99EC385E2307046A007D68B1 /* ofxAlembicType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99EC38552307046A007D68B1 /* ofxAlembicType.cpp */; };
@@ -61,6 +62,7 @@
 		99858FA9230883BF0011F2F9 /* libHalf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libHalf.a; path = ../../../../../../usr/local/Cellar/ilmbase/2.3.0/lib/libHalf.a; sourceTree = "<group>"; };
 		99858FAB230883DF0011F2F9 /* libIex.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libIex.a; path = ../../../../../../usr/local/Cellar/ilmbase/2.3.0/lib/libIex.a; sourceTree = "<group>"; };
 		99858FAD230883FA0011F2F9 /* libIexMath.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libIexMath.a; path = ../../../../../../usr/local/Cellar/ilmbase/2.3.0/lib/libIexMath.a; sourceTree = "<group>"; };
+		99858FB023088BF70011F2F9 /* libAlembic.1.7.11.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libAlembic.1.7.11.dylib; path = libs/alembic/lib/osx/libAlembic.1.7.11.dylib; sourceTree = "<group>"; };
 		99EC38492307043D007D68B1 /* libghAlembic.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libghAlembic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		99EC38512307046A007D68B1 /* ofxAlembicUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAlembicUtil.h; sourceTree = "<group>"; };
 		99EC38522307046A007D68B1 /* ofxAlembicUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAlembicUtil.cpp; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99858FB323089C090011F2F9 /* libAlembic.1.7.11.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +106,7 @@
 		99858F9E230871190011F2F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99858FB023088BF70011F2F9 /* libAlembic.1.7.11.dylib */,
 				99858FAD230883FA0011F2F9 /* libIexMath.a */,
 				99858FAB230883DF0011F2F9 /* libIex.a */,
 				99858FA9230883BF0011F2F9 /* libHalf.a */,
@@ -190,6 +194,7 @@
 				99EC38452307043D007D68B1 /* Headers */,
 				99EC38462307043D007D68B1 /* Sources */,
 				99EC38472307043D007D68B1 /* Frameworks */,
+				99858FB223088C300011F2F9 /* ShellScript */,
 			);
 			buildRules = (
 				99858F7A23086ED60011F2F9 /* PBXBuildRule */,
@@ -236,6 +241,27 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		99858FB223088C300011F2F9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ninstall_name_tool -change $SRCROOT/libs/alembic/lib/osx/libAlembic.1.7.11.dylib @executable_path/libAlembic.1.7.11.dylib $BUILD_DIR/$CONFIGURATION/lib$PRODUCT_NAME.dylib\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		99858F912308707A0011F2F9 /* Sources */ = {
@@ -417,15 +443,13 @@
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/libs/alembic/include";
+				LD_DYLIB_INSTALL_NAME = "$(EXECUTABLE_PATH)";
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/libs/alembic/lib/osx",
 					/usr/local/lib,
 				);
 				MACH_O_TYPE = mh_dylib;
-				OTHER_LDFLAGS = (
-					"-l",
-					Alembic,
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SYSTEM_HEADER_SEARCH_PATHS = (
@@ -445,15 +469,13 @@
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/libs/alembic/include";
+				LD_DYLIB_INSTALL_NAME = "$(EXECUTABLE_PATH)";
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/libs/alembic/lib/osx",
 					/usr/local/lib,
 				);
 				MACH_O_TYPE = mh_dylib;
-				OTHER_LDFLAGS = (
-					"-l",
-					Alembic,
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SYSTEM_HEADER_SEARCH_PATHS = (

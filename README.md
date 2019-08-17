@@ -9,3 +9,6 @@ Included `Alembic` is currently only built without HDF5 Support, therefore only 
 - `glm`
 - `OpenEXR`
 
+### Related
+- [ghAlembicComponent](https://github.com/mnmly/ghAlembicComponent)
+
