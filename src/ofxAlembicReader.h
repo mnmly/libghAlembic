@@ -1,10 +1,10 @@
 #pragma once
 
 #include <Alembic/AbcGeom/All.h>
-#include <Alembic/AbcCoreHDF5/All.h>
+//#include <Alembic/AbcCoreHDF5/All.h>
 #include <Alembic/AbcCoreOgawa/All.h>
 
-#include "ofMain.h"
+// #include "ofMain.h"
 
 #include "ofxAlembicUtil.h"
 #include "ofxAlembicType.h"
@@ -61,16 +61,16 @@ public:
 	inline const vector<string>& getNames() const { return object_name_arr; }
 	inline const vector<string>& getFullnames() const { return object_fullname_arr; }
 
-	bool get(const string& path, ofMatrix4x4& matrix);
+	bool get(const string& path, glm::mat4& matrix);
 	bool get(const string& path, ofMesh& mesh);
 	bool get(const string& path, vector<ofPolyline>& curves);
-	bool get(const string& path, vector<ofVec3f>& points);
+	bool get(const string& path, vector<glm::vec3>& points);
 	bool get(const string& path, ofCamera &camera);
 
-	bool get(size_t idx, ofMatrix4x4& matrix);
+	bool get(size_t idx, glm::mat4& matrix);
 	bool get(size_t idx, ofMesh& mesh);
 	bool get(size_t idx, vector<ofPolyline>& curves);
-	bool get(size_t idx, vector<ofVec3f>& points);
+	bool get(size_t idx, vector<glm::vec3>& points);
 	bool get(size_t idx, ofCamera &camera);
 
 	inline IGeom* get(size_t idx) { return object_arr[idx]; }
@@ -121,7 +121,7 @@ public:
 	void draw();
 	void debugDraw();
 	
-	inline const ofMatrix4x4& getGlobalTransform() const { return transform; }
+	inline const glm::mat4& getGlobalTransform() const { return transform; }
 
 	size_t getIndex() const { return index; }
 	
@@ -147,7 +147,7 @@ protected:
 	Type type;
 	
 	size_t index;
-	ofMatrix4x4 transform;
+	glm::mat4 transform;
 
 	Alembic::AbcGeom::IObject m_object;
 	vector<ofPtr<IGeom> > m_children;
@@ -296,7 +296,7 @@ protected:
 //
 
 template <>
-inline bool ofxAlembic::IGeom::get(ofMatrix4x4 &o)
+inline bool ofxAlembic::IGeom::get(glm::mat4 &o)
 {
 	if (type != ofxAlembic::XFORM)
 	{
@@ -335,7 +335,7 @@ inline bool ofxAlembic::IGeom::get(vector<ofxAlembic::Point> &o)
 }
 
 template <>
-inline bool ofxAlembic::IGeom::get(vector<ofVec3f> &o)
+inline bool ofxAlembic::IGeom::get(vector<glm::vec3> &o)
 {
 	if (type != ofxAlembic::POINTS)
 	{

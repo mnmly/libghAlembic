@@ -1,14 +1,84 @@
 #pragma once
 
-#include "ofMain.h"
+//#include "ofMain.h"
 
 #include "ofxAlembicType.h"
 
 #include <Alembic/AbcGeom/All.h>
-#include <Alembic/AbcCoreHDF5/All.h>
+#include <Alembic/AbcCoreFactory/All.h>
+//#include <Alembic/AbcCoreHDF5/All.h>
+#include <Alembic/AbcCoreOgawa/All.h>
+#include <iostream>
 
 namespace ofxAlembic
 {
+    
+    
+    std::string& ltrim(std::string& str, const std::string& chars = "\t\n\v\f\r ")
+    {
+        str.erase(0, str.find_first_not_of(chars));
+        return str;
+    }
+    
+    std::string& rtrim(std::string& str, const std::string& chars = "\t\n\v\f\r ")
+    {
+        str.erase(str.find_last_not_of(chars) + 1);
+        return str;
+    }
+    
+    std::string& trim(std::string& str, const std::string& chars = "\t\n\v\f\r ")
+    {
+        return ltrim(rtrim(str, chars), chars);
+    }
+    
+    //--------------------------------------------------
+    vector <string> ofSplitString(const string & source, const string & delimiter, bool ignoreEmpty, bool trimFlag) {
+        vector<string> result;
+        if (delimiter.empty()) {
+            result.push_back(source);
+            return result;
+        }
+        string::const_iterator substart = source.begin(), subend;
+        while (true) {
+            subend = search(substart, source.end(), delimiter.begin(), delimiter.end());
+            string sub(substart, subend);
+            if(trimFlag) {
+                
+                sub = trim(sub);
+            }
+            if (!ignoreEmpty || !sub.empty()) {
+                result.push_back(sub);
+            }
+            if (subend == source.end()) {
+                break;
+            }
+            substart = subend + delimiter.size();
+        }
+        return result;
+    }
+    
+    //--------------------------------------------------
+    string ofJoinString(const vector<string>& stringElements, const string& delimiter){
+        string str;
+        if(stringElements.empty()){
+            return str;
+        }
+        auto numStrings = stringElements.size();
+        string::size_type strSize = delimiter.size() * (numStrings - 1);
+        for (const string &s : stringElements) {
+            strSize += s.size();
+        }
+        str.reserve(strSize);
+        str += stringElements[0];
+        for (decltype(numStrings) i = 1; i < numStrings; ++i) {
+            str += delimiter;
+            str += stringElements[i];
+        }
+        return str;
+    }
+
+    
+    
 class Writer;
 }
 
@@ -18,7 +88,7 @@ public:
 
 	~Writer() { close(); }
 
-	bool open(const string& path, float fps = 30);
+    bool open(const string& path, float fps = 30, Alembic::AbcCoreFactory::IFactory::CoreType type = Alembic::AbcCoreFactory::IFactory::kOgawa);
 	void close();
 
 	void addPoints(const string& path, const Points& points);
@@ -47,13 +117,13 @@ protected:
 	T& getObject(const string& path)
 	{
 		using namespace Alembic::AbcGeom;
-		
+    
 		// validation
 		if (path.empty()
 			|| path[0] != '/'
 			|| path[path.size() - 1] == '/')
 		{
-			ofLogError("ofxAlembic::Writer") << "invalid path: '" << path << "'";
+//            ofLogError("ofxAlembic::Writer") << "invalid path: '" << path << "'";
 			throw;
 		}
 		
@@ -77,7 +147,7 @@ protected:
 			map<string, OObject*>::iterator parent_it = object_map.find(parent_path);
 			if (parent_it == object_map.end())
 			{
-				ofLogError("ofxAlembic::Writer") << "parent object not found: '" << path << "'";
+//                ofLogError("ofxAlembic::Writer") << "parent object not found: '" << path << "'";
 				throw;
 			}
 			
@@ -99,3 +169,18 @@ protected:
 		}
 	}
 };
+
+
+
+#define ghAPI extern "C"
+#pragma mark - exposed APIs
+
+ghAPI ofxAlembic::Writer* AbcWriterCreateInstance();
+
+ghAPI bool AbcWriterOpen(ofxAlembic::Writer* instance, char* filepath);
+ghAPI void AbcWriterClose(ofxAlembic::Writer* instance);
+ghAPI void AbcWriterAddPolyMesh(ofxAlembic::Writer* instance, const char *name,
+                                float* vertices, int numVertices,
+                                float* normals, int numNormals,
+                                float* uvs, int numUVs,
+                                int* faces, int numFaces, int numFaceCount, bool _flipAxis);

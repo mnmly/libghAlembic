@@ -1,0 +1,500 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		99858F982308707A0011F2F9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99858F972308707A0011F2F9 /* main.cpp */; };
+		99858F9F230871190011F2F9 /* libghAlembic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 99EC38492307043D007D68B1 /* libghAlembic.dylib */; };
+		99EC385A2307046A007D68B1 /* ofxAlembicUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 99EC38512307046A007D68B1 /* ofxAlembicUtil.h */; };
+		99EC385B2307046A007D68B1 /* ofxAlembicUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99EC38522307046A007D68B1 /* ofxAlembicUtil.cpp */; };
+		99EC385E2307046A007D68B1 /* ofxAlembicType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99EC38552307046A007D68B1 /* ofxAlembicType.cpp */; };
+		99EC385F2307046A007D68B1 /* ofxAlembic.h in Headers */ = {isa = PBXBuildFile; fileRef = 99EC38562307046A007D68B1 /* ofxAlembic.h */; };
+		99EC38602307046A007D68B1 /* ofxAlembicWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99EC38572307046A007D68B1 /* ofxAlembicWriter.cpp */; };
+		99EC38612307046A007D68B1 /* ofxAlembicWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 99EC38582307046A007D68B1 /* ofxAlembicWriter.h */; };
+		99EC38622307046A007D68B1 /* ofxAlembicType.h in Headers */ = {isa = PBXBuildFile; fileRef = 99EC38592307046A007D68B1 /* ofxAlembicType.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		99858F7A23086ED60011F2F9 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+/* End PBXBuildRule section */
+
+/* Begin PBXContainerItemProxy section */
+		99858F9C2308710F0011F2F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 99EC38412307043D007D68B1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 99EC38482307043D007D68B1;
+			remoteInfo = ghAlembic;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		99858F932308707A0011F2F9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		99858F952308707A0011F2F9 /* ghAlembicTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ghAlembicTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		99858F972308707A0011F2F9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		99858FA023087DF30011F2F9 /* libAlembic.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAlembic.a; path = libs/alembic/lib/osx/libAlembic.a; sourceTree = "<group>"; };
+		99858FA223087F7F0011F2F9 /* libhdf5_hl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libhdf5_hl.a; path = libs/alembic/lib/osx/libhdf5_hl.a; sourceTree = "<group>"; };
+		99858FA323087F7F0011F2F9 /* libhdf5.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libhdf5.a; path = libs/alembic/lib/osx/libhdf5.a; sourceTree = "<group>"; };
+		99858FA9230883BF0011F2F9 /* libHalf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libHalf.a; path = ../../../../../../usr/local/Cellar/ilmbase/2.3.0/lib/libHalf.a; sourceTree = "<group>"; };
+		99858FAB230883DF0011F2F9 /* libIex.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libIex.a; path = ../../../../../../usr/local/Cellar/ilmbase/2.3.0/lib/libIex.a; sourceTree = "<group>"; };
+		99858FAD230883FA0011F2F9 /* libIexMath.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libIexMath.a; path = ../../../../../../usr/local/Cellar/ilmbase/2.3.0/lib/libIexMath.a; sourceTree = "<group>"; };
+		99EC38492307043D007D68B1 /* libghAlembic.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libghAlembic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		99EC38512307046A007D68B1 /* ofxAlembicUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAlembicUtil.h; sourceTree = "<group>"; };
+		99EC38522307046A007D68B1 /* ofxAlembicUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAlembicUtil.cpp; sourceTree = "<group>"; };
+		99EC38532307046A007D68B1 /* ofxAlembicReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAlembicReader.h; sourceTree = "<group>"; };
+		99EC38542307046A007D68B1 /* ofxAlembicReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAlembicReader.cpp; sourceTree = "<group>"; };
+		99EC38552307046A007D68B1 /* ofxAlembicType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAlembicType.cpp; sourceTree = "<group>"; };
+		99EC38562307046A007D68B1 /* ofxAlembic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAlembic.h; sourceTree = "<group>"; };
+		99EC38572307046A007D68B1 /* ofxAlembicWriter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAlembicWriter.cpp; sourceTree = "<group>"; };
+		99EC38582307046A007D68B1 /* ofxAlembicWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAlembicWriter.h; sourceTree = "<group>"; };
+		99EC38592307046A007D68B1 /* ofxAlembicType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAlembicType.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		99858F922308707A0011F2F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99858F9F230871190011F2F9 /* libghAlembic.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99EC38472307043D007D68B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		99858F962308707A0011F2F9 /* ghAlembicTest */ = {
+			isa = PBXGroup;
+			children = (
+				99858F972308707A0011F2F9 /* main.cpp */,
+			);
+			path = ghAlembicTest;
+			sourceTree = "<group>";
+		};
+		99858F9E230871190011F2F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				99858FAD230883FA0011F2F9 /* libIexMath.a */,
+				99858FAB230883DF0011F2F9 /* libIex.a */,
+				99858FA9230883BF0011F2F9 /* libHalf.a */,
+				99858FA223087F7F0011F2F9 /* libhdf5_hl.a */,
+				99858FA323087F7F0011F2F9 /* libhdf5.a */,
+				99858FA023087DF30011F2F9 /* libAlembic.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		99EC38402307043D007D68B1 = {
+			isa = PBXGroup;
+			children = (
+				99858F962308707A0011F2F9 /* ghAlembicTest */,
+				99EC384A2307043D007D68B1 /* Products */,
+				99EC38502307046A007D68B1 /* src */,
+				99858F9E230871190011F2F9 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		99EC384A2307043D007D68B1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				99EC38492307043D007D68B1 /* libghAlembic.dylib */,
+				99858F952308707A0011F2F9 /* ghAlembicTest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		99EC38502307046A007D68B1 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				99EC38512307046A007D68B1 /* ofxAlembicUtil.h */,
+				99EC38522307046A007D68B1 /* ofxAlembicUtil.cpp */,
+				99EC38532307046A007D68B1 /* ofxAlembicReader.h */,
+				99EC38542307046A007D68B1 /* ofxAlembicReader.cpp */,
+				99EC38552307046A007D68B1 /* ofxAlembicType.cpp */,
+				99EC38562307046A007D68B1 /* ofxAlembic.h */,
+				99EC38572307046A007D68B1 /* ofxAlembicWriter.cpp */,
+				99EC38582307046A007D68B1 /* ofxAlembicWriter.h */,
+				99EC38592307046A007D68B1 /* ofxAlembicType.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		99EC38452307043D007D68B1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99EC385F2307046A007D68B1 /* ofxAlembic.h in Headers */,
+				99EC385A2307046A007D68B1 /* ofxAlembicUtil.h in Headers */,
+				99EC38622307046A007D68B1 /* ofxAlembicType.h in Headers */,
+				99EC38612307046A007D68B1 /* ofxAlembicWriter.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		99858F942308707A0011F2F9 /* ghAlembicTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99858F992308707A0011F2F9 /* Build configuration list for PBXNativeTarget "ghAlembicTest" */;
+			buildPhases = (
+				99858F912308707A0011F2F9 /* Sources */,
+				99858F922308707A0011F2F9 /* Frameworks */,
+				99858F932308707A0011F2F9 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				99858F9D2308710F0011F2F9 /* PBXTargetDependency */,
+			);
+			name = ghAlembicTest;
+			productName = ghAlembicTest;
+			productReference = 99858F952308707A0011F2F9 /* ghAlembicTest */;
+			productType = "com.apple.product-type.tool";
+		};
+		99EC38482307043D007D68B1 /* ghAlembic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99EC384D2307043D007D68B1 /* Build configuration list for PBXNativeTarget "ghAlembic" */;
+			buildPhases = (
+				99EC38452307043D007D68B1 /* Headers */,
+				99EC38462307043D007D68B1 /* Sources */,
+				99EC38472307043D007D68B1 /* Frameworks */,
+			);
+			buildRules = (
+				99858F7A23086ED60011F2F9 /* PBXBuildRule */,
+			);
+			dependencies = (
+			);
+			name = ghAlembic;
+			productName = ghAlembic;
+			productReference = 99EC38492307043D007D68B1 /* libghAlembic.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		99EC38412307043D007D68B1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = "HIROAKI YAMANE";
+				TargetAttributes = {
+					99858F942308707A0011F2F9 = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					99EC38482307043D007D68B1 = {
+						CreatedOnToolsVersion = 10.3;
+					};
+				};
+			};
+			buildConfigurationList = 99EC38442307043D007D68B1 /* Build configuration list for PBXProject "ghAlembic" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 99EC38402307043D007D68B1;
+			productRefGroup = 99EC384A2307043D007D68B1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				99EC38482307043D007D68B1 /* ghAlembic */,
+				99858F942308707A0011F2F9 /* ghAlembicTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		99858F912308707A0011F2F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99858F982308707A0011F2F9 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99EC38462307043D007D68B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99EC38602307046A007D68B1 /* ofxAlembicWriter.cpp in Sources */,
+				99EC385E2307046A007D68B1 /* ofxAlembicType.cpp in Sources */,
+				99EC385B2307046A007D68B1 /* ofxAlembicUtil.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		99858F9D2308710F0011F2F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 99EC38482307043D007D68B1 /* ghAlembic */;
+			targetProxy = 99858F9C2308710F0011F2F9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		99858F9A2308707A0011F2F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GP3ES2Y53G;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/src";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					"/Users/mnmly/Development-local/GitHub/cpp/alembic/lib",
+					/usr/local/include,
+					/usr/local/include/OpenEXR,
+				);
+			};
+			name = Debug;
+		};
+		99858F9B2308707A0011F2F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GP3ES2Y53G;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/src";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					"/Users/mnmly/Development-local/GitHub/cpp/alembic/lib",
+					/usr/local/include,
+					/usr/local/include/OpenEXR,
+				);
+			};
+			name = Release;
+		};
+		99EC384B2307043D007D68B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		99EC384C2307043D007D68B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		99EC384E2307043D007D68B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GP3ES2Y53G;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/libs/alembic/include";
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/libs/alembic/lib/osx",
+					/usr/local/lib,
+				);
+				MACH_O_TYPE = mh_dylib;
+				OTHER_LDFLAGS = (
+					"-l",
+					Alembic,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					/usr/local/include/OpenEXR,
+					/usr/local/include,
+				);
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		99EC384F2307043D007D68B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GP3ES2Y53G;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/libs/alembic/include";
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/libs/alembic/lib/osx",
+					/usr/local/lib,
+				);
+				MACH_O_TYPE = mh_dylib;
+				OTHER_LDFLAGS = (
+					"-l",
+					Alembic,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					/usr/local/include/OpenEXR,
+					/usr/local/include,
+				);
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		99858F992308707A0011F2F9 /* Build configuration list for PBXNativeTarget "ghAlembicTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99858F9A2308707A0011F2F9 /* Debug */,
+				99858F9B2308707A0011F2F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		99EC38442307043D007D68B1 /* Build configuration list for PBXProject "ghAlembic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99EC384B2307043D007D68B1 /* Debug */,
+				99EC384C2307043D007D68B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		99EC384D2307043D007D68B1 /* Build configuration list for PBXNativeTarget "ghAlembic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99EC384E2307043D007D68B1 /* Debug */,
+				99EC384F2307043D007D68B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 99EC38412307043D007D68B1 /* Project object */;
+}

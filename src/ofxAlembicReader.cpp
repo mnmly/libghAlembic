@@ -125,13 +125,13 @@ bool ofxAlembic::Reader::open(const string& path)
 		return false;
 	}
 
-	m_archive = IArchive(Alembic::AbcCoreHDF5::ReadArchive(), ofToDataPath(path),
-                         Alembic::Abc::ErrorHandler::kQuietNoopPolicy);
-    if (!m_archive.valid()) {
+//    m_archive = IArchive(Alembic::AbcCoreHDF5::ReadArchive(), ofToDataPath(path),
+//                         Alembic::Abc::ErrorHandler::kQuietNoopPolicy);
+//    if (!m_archive.valid()) {
         m_archive = IArchive(Alembic::AbcCoreOgawa::ReadArchive(), ofToDataPath(path),
                              Alembic::Abc::ErrorHandler::kNoisyNoopPolicy);
         if (!m_archive.valid()) return false;
-    }
+//    }
 
 	m_root = ofPtr<IGeom>(new IGeom(m_archive.getTop()));
 
@@ -228,7 +228,7 @@ void ofxAlembic::Reader::dumpFullnames()
 	}
 }
 
-bool ofxAlembic::Reader::get(const string& path, ofMatrix4x4& matrix)
+bool ofxAlembic::Reader::get(const string& path, glm::mat4& matrix)
 {
 	IGeom *o = get(path);
 	if (o == NULL) return false;
@@ -249,7 +249,7 @@ bool ofxAlembic::Reader::get(const string& path, vector<ofPolyline>& curves)
 	return o->get(curves);
 }
 
-bool ofxAlembic::Reader::get(const string& path, vector<ofVec3f>& points)
+bool ofxAlembic::Reader::get(const string& path, vector<glm::vec3>& points)
 {
 	IGeom *o = get(path);
 	if (o == NULL) return false;
@@ -263,7 +263,7 @@ bool ofxAlembic::Reader::get(const string& path, ofCamera &camera)
 	return o->get(camera);
 }
 
-bool ofxAlembic::Reader::get(size_t idx, ofMatrix4x4& matrix)
+bool ofxAlembic::Reader::get(size_t idx, glm::mat4& matrix)
 {
 	IGeom *o = get(idx);
 	if (o == NULL) return false;
@@ -284,7 +284,7 @@ bool ofxAlembic::Reader::get(size_t idx, vector<ofPolyline>& curves)
 	return o->get(curves);
 }
 
-bool ofxAlembic::Reader::get(size_t idx, vector<ofVec3f>& points)
+bool ofxAlembic::Reader::get(size_t idx, vector<glm::vec3>& points)
 {
 	IGeom *o = get(idx);
 	if (o == NULL) return false;
