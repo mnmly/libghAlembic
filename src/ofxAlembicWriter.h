@@ -10,6 +10,15 @@
 #include <Alembic/AbcCoreOgawa/All.h>
 #include <iostream>
 
+
+#ifdef _WIN32
+#define ghAPI extern "C" __declspec(dllexport)
+#elif __APPLE__
+#define ghAPI extern "C"
+#endif
+
+
+
 namespace ofxAlembic
 {
     
@@ -169,13 +178,9 @@ protected:
 	}
 };
 
-
-
-#define ghAPI extern "C"
 #pragma mark - exposed APIs
 
 ghAPI ofxAlembic::Writer* AbcWriterCreateInstance();
-
 ghAPI bool AbcWriterOpen(ofxAlembic::Writer* instance, char* filepath);
 ghAPI void AbcWriterClose(ofxAlembic::Writer* instance);
 ghAPI void AbcWriterAddPolyMesh(ofxAlembic::Writer* instance, const char *name,

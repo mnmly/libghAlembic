@@ -120,9 +120,6 @@ void Writer::rewind()
 }
 
 
-#define ghAPI extern "C"
-#pragma mark - exposed APIs
-
 ghAPI Writer* AbcWriterCreateInstance() {
     auto writer = new Writer();
     return writer;

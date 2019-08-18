@@ -7,23 +7,28 @@
 //
 
 #include <iostream>
+#include <string>
 #include "ofxAlembicWriter.h"
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    string path = "/Users/mnmly/Downloads/sample.abc";
-    
+int main(int argc, const char * argv[]) {    
     {
-        
+		std::cout << "00000" << std::endl;
+
         auto writer = AbcWriterCreateInstance();
-        AbcWriterOpen(writer, "/Users/mnmly/Downloads/sample.abc");
+#ifdef _WIN32
+		string path = "C:\\Users\\Hiroaki Yamane\\Downloads\\sample.abc";
+		char* p = const_cast<char*>(path.c_str());
+		AbcWriterOpen(writer, p);
+#elif __APPLE__
+		AbcWriterOpen(writer, "/Users/mnmly/Downloads/sample.abc");
+#endif
         
         float vertices[12] = { -1, -2,0,-1,2,0,1,-2,0,1,2, 0};
         int numVertices = 4;
         float normals[12] = {-1,-2,0,-1,2, 0,1,-2,0,1,2,0 };
         int numNormals = 4;
-        float uvs[0] = {};
-        int numUvs = 0;
+        // float uvs[0] = {1.0, 1.0, 1.0, };
+        // int numUvs = 0;
         int faces[6] = {0,2, 3, 0,3, 1};
         int numFaces = 6;
         int numFaceCount = 2;
@@ -31,10 +36,10 @@ int main(int argc, const char * argv[]) {
         AbcWriterAddPolyMesh(writer, "/mesh",
                              vertices, numVertices,
                              normals, numNormals,
-                             uvs, numUvs,
+                             nullptr, 0,
                              faces, numFaces, numFaceCount, true);
         AbcWriterClose(writer);
-        
+		std::cout << "??" << std::endl;
     }
     
     return 0;
