@@ -8,6 +8,8 @@
 #include <Alembic/AbcCoreFactory/All.h>
 //#include <Alembic/AbcCoreHDF5/All.h>
 #include <Alembic/AbcCoreOgawa/All.h>
+#include <Alembic/AbcMaterial/All.h>
+
 #include <iostream>
 
 
@@ -101,7 +103,7 @@ public:
 	void close();
 
 	void addPoints(const string& path, const Points& points);
-	void addPolyMesh(const string& path, const PolyMesh& polymesh);
+    void addPolyMesh(const string& path, const PolyMesh& polymesh, const string& materialName = "");
 	void addCurves(const string& path, const Curves& curves);
 	void addXform(const string& path, const XForm& xform);
 	void addCamera(const string& path, const Camera& camera);
@@ -117,7 +119,9 @@ public:
 protected: 
 	map<string, Alembic::AbcGeom::OObject*> object_map;
 	Alembic::AbcGeom::OArchive archive;
-
+    Alembic::AbcGeom::OObject root;
+    Alembic::Abc::OObject materials;
+    Alembic::AbcMaterial::OMaterial materialA;
 	float inv_fps;
 	float current_time;
 
@@ -184,6 +188,7 @@ ghAPI ofxAlembic::Writer* AbcWriterCreateInstance();
 ghAPI bool AbcWriterOpen(ofxAlembic::Writer* instance, char* filepath);
 ghAPI void AbcWriterClose(ofxAlembic::Writer* instance);
 ghAPI void AbcWriterAddPolyMesh(ofxAlembic::Writer* instance, const char *name,
+                                const char *materialName,
                                 float* vertices, int numVertices,
                                 float* normals, int numNormals,
                                 float* uvs, int numUVs,

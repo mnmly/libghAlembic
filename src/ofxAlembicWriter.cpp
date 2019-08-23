@@ -49,14 +49,21 @@ void Writer::addPoints(const string& path, const Points& points)
 	points.get(schema);
 }
 
-void Writer::addPolyMesh(const string& path, const PolyMesh& polymesh)
+void Writer::addPolyMesh(const string& path, const PolyMesh& polymesh, const string& materialName)
 {
 	typedef OPolyMesh Type;
 	typedef Type::schema_type Schema;
+    
 
 	Type &object = getObject<Type>(path);
 	Schema &schema = object.getSchema();
-
+    
+    // Add materials to slot
+    string _materialName = materialName == "" ? object.getName() : materialName;
+    auto faceset = schema.createFaceSet(_materialName);
+    Alembic::AbcGeom::OFaceSetSchema::Sample facesetSamp(polymesh.mesh.faces);
+    faceset.getSchema().set(facesetSamp);
+    
 	polymesh.get(schema);
 }
 
@@ -138,6 +145,7 @@ ghAPI void AbcWriterClose(Writer* instance) {
 //}
 
 ghAPI void AbcWriterAddPolyMesh(Writer* instance, const char *name,
+                                const char *materialName,
                                 float* vertices, int numVertices,
                                 float* normals, int numNormals,
                                 float* uvs, int numUVs,
@@ -183,5 +191,9 @@ ghAPI void AbcWriterAddPolyMesh(Writer* instance, const char *name,
     mesh.numFaces = numFaceCount;
     
     auto polymesh = PolyMesh(mesh);
-    instance->addPolyMesh(name, polymesh);
+    if (materialName == nullptr) {
+        instance->addPolyMesh(name, polymesh);
+    } else {
+        instance->addPolyMesh(name, polymesh, materialName);
+    }
 }

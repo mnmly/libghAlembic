@@ -12,8 +12,6 @@
 
 int main(int argc, const char * argv[]) {    
     {
-		std::cout << "00000" << std::endl;
-
         auto writer = AbcWriterCreateInstance();
 #ifdef _WIN32
 		string path = "C:\\Users\\Hiroaki Yamane\\Downloads\\sample.abc";
@@ -34,12 +32,13 @@ int main(int argc, const char * argv[]) {
         int numFaceCount = 2;
         
         AbcWriterAddPolyMesh(writer, "/mesh",
+                             nullptr,
                              vertices, numVertices,
                              normals, numNormals,
                              nullptr, 0,
                              faces, numFaces, numFaceCount, true);
-        AbcWriterClose(writer);
-		std::cout << "??" << std::endl;
+         AbcWriterClose(writer);
+		std::cout << "DONE wriing to sample.abc" << std::endl;
     }
     
     return 0;
