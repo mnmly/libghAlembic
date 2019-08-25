@@ -14,7 +14,7 @@ int main(int argc, const char * argv[]) {
     {
         auto writer = AbcWriterCreateInstance();
 #ifdef _WIN32
-		string path = "C:\\Users\\Hiroaki Yamane\\Downloads\\sample.abc";
+		string path = "C:\\Users\\mnmly\\Downloads\\sample.abc";
 		char* p = const_cast<char*>(path.c_str());
 		AbcWriterOpen(writer, p);
 #elif __APPLE__
