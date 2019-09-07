@@ -140,9 +140,16 @@ ghAPI void AbcWriterClose(Writer* instance) {
     instance->close();
 }
 
-//ghAPI void AbcWriterBegin(AbcWriter* instance, const char *name) {
-//    instance->begin(name);
-//}
+ghAPI void AbcWriterAddCurve(Writer* instance, const char* name,
+	float* vertices, int numVertices, int degree, bool periodic, bool _flipAxis) {
+	ofxAlembic::Polyline c;
+	c.degree = degree;
+	c.periodic = periodic;
+	c.addVertices(vertices, numVertices, _flipAxis);
+	Curves curves;
+	curves.curves.push_back(c);
+	instance->addCurves(name, curves);
+}
 
 ghAPI void AbcWriterAddPolyMesh(Writer* instance, const char *name,
                                 const char *materialName,

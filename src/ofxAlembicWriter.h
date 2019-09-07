@@ -193,3 +193,5 @@ ghAPI void AbcWriterAddPolyMesh(ofxAlembic::Writer* instance, const char *name,
                                 float* normals, int numNormals,
                                 float* uvs, int numUVs,
                                 int* faces, int numFaces, int numFaceCount, bool _flipAxis);
+ghAPI void AbcWriterAddCurve(ofxAlembic::Writer* instance, const char* name,
+	float* vertices, int numVertices, int degree, bool periodic, bool _flipAxis);
