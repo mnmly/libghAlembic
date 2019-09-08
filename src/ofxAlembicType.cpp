@@ -520,13 +520,12 @@ void Curves::get(OCurvesSchema &schema) const
         {
             positions.push_back(toAbc(polyline[i]));
         }
-
         num_vertices.push_back(polyline.size());
     }
 
     OCurvesSchema::Sample sample((P3fArraySample(positions)),
                                  Int32ArraySample(num_vertices),
-                                 c.degree == 3 ? kCubic : kLinear,
+                                 c.degree == 2 ? kLinear : kCubic,
                                  c.periodic ? kPeriodic : kNonPeriodic);
     schema.set(sample);
 }
