@@ -509,6 +509,8 @@ void Curves::get(OCurvesSchema &schema) const
     
     vector<V3f> positions;
     vector<int32_t> num_vertices;
+	
+	auto c = curves.at(0);
 
     for (int n = 0; n < curves.size(); n++)
     {
@@ -518,14 +520,13 @@ void Curves::get(OCurvesSchema &schema) const
         {
             positions.push_back(toAbc(polyline[i]));
         }
-
         num_vertices.push_back(polyline.size());
     }
 
     OCurvesSchema::Sample sample((P3fArraySample(positions)),
                                  Int32ArraySample(num_vertices),
-                                 kLinear,
-                                 kNonPeriodic);
+                                 c.degree == 2 ? kLinear : kCubic,
+                                 c.periodic ? kPeriodic : kNonPeriodic);
     schema.set(sample);
 }
 
@@ -639,13 +640,22 @@ const glm::vec3& Polyline::operator[] (int index) const {
     return points[index];
 }
 
-void Polyline::addVertices(const vector<glm::vec3> &verts) {
-    points.insert( points.end(), verts.begin(), verts.end() );
+void ofxAlembic::Polyline::addVertices(float* num, int numVertices, bool _flipAxis)
+{
+	glm::vec3* v = reinterpret_cast<glm::vec3*>(num);
+	vector<glm::vec3> vertices(v, v + numVertices);
+	if (_flipAxis) {
+		for (auto& _v : vertices) {
+			float tmpZ = _v.z;
+			_v.z = -_v.y;
+			_v.y = tmpZ;
+		}
+	}
+	addVertices(vertices);
 }
 
-Polyline::Polyline(const std::vector<glm::vec3>& verts){
-    clear();
-    addVertices(verts);
+void Polyline::addVertices(const vector<glm::vec3> &verts) {
+    points.insert( points.end(), verts.begin(), verts.end() );
 }
 
 void Polyline::clear() {

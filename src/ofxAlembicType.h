@@ -162,9 +162,12 @@ class ofxAlembic::Polyline
 {
 public:
     Polyline() {}
-    Polyline(const std::vector<glm::vec3>& verts);
+    Polyline(const std::vector<glm::vec3>& verts, int degree, bool periodic);
     size_t size() const;
+	int degree;
+	bool periodic;
     const glm::vec3& operator[] (int index) const;
+	void addVertices(float* num, int numVertices, bool flipAxis);
 private:
     vector<glm::vec3> points;
     void addVertices(const vector<glm::vec3>& verts);
