@@ -75,7 +75,45 @@ void Writer::addCurves(const string& path, const Curves& curves)
 	Type &object = getObject<Type>(path);
 	Schema &schema = object.getSchema();
 
+    
 	curves.get(schema);
+}
+
+void Writer::addCurvesEx(const string& path, float* vertices, size_t totalVertices,
+                         int32_t* numVertices, size_t numCurves,
+                         bool periodic,
+                         float* widths,
+                         float* uvs,
+                         float* normals,
+                         float* weights, uint8_t* orders, float* knots,
+                         bool _flipAxis)
+{
+    typedef OCurves Type;
+    typedef Type::schema_type Schema;
+    
+    Type &object = getObject<Type>(path);
+    Schema &schema = object.getSchema();
+    
+    size_t numKnots = 0;
+    for (int i = 0; i < numCurves; i++) {
+        numKnots += numVertices[i] + orders[i] - 1;
+    }
+    OFloatGeomParam::Sample widthSample = widths ? OFloatGeomParam::Sample(FloatArraySample((const float *)widths, totalVertices), kVertexScope) : OFloatGeomParam::Sample();
+    OV2fGeomParam::Sample uvSample = uvs ? OV2fGeomParam::Sample(V2fArraySample((const V2f *)uvs, totalVertices), kVertexScope ) : OV2fGeomParam::Sample();
+    ON3fGeomParam::Sample normalSample = normals ? ON3fGeomParam::Sample(V3fArraySample((const V3f *)normals, totalVertices), kVertexScope) : ON3fGeomParam::Sample();
+    OCurvesSchema::Sample curves_sample(
+                                        V3fArraySample( ( const V3f * ) vertices, totalVertices ),
+                                        Int32ArraySample( numVertices, numCurves),
+                                        kVariableOrder,
+                                        periodic ? kPeriodic : kNonPeriodic,
+                                        widthSample,
+                                        uvSample,
+                                        normalSample,
+                                        kBsplineBasis,
+                                        FloatArraySample( weights, totalVertices ),
+                                        UcharArraySample( orders, numCurves ),
+                                        FloatArraySample( knots, numKnots ));
+    schema.set(curves_sample);
 }
 
 void Writer::addXform(const string& path, const XForm& xform)
@@ -150,6 +188,35 @@ ghAPI void AbcWriterAddCurve(Writer* instance, const char* name,
 	curves.curves.push_back(c);
 	instance->addCurves(name, curves);
 }
+
+ghAPI void AbcWriterAddCurveEx(Writer* instance, const char* name,
+                               float* vertices, size_t totalVertices,
+                               int32_t* numVertices, size_t numCurves,
+                               bool periodic,
+                               float* widths,
+                               float* uvs,
+                               float* normals,
+                               float* weights, uint8_t* orders, float* knots,
+                               bool _flipAxis) {
+    
+    if (_flipAxis) {
+        for (int i = 0; i < totalVertices * 3; i ++) {
+            float tempY = vertices[i * 3 + 1];
+            vertices[i * 3 + 1] = vertices[i * 3 + 2];
+            vertices[i * 3 + 2] = -tempY;
+        }
+    }
+    size_t numNormals = totalVertices * 3;
+    instance->addCurvesEx(name, vertices, totalVertices,
+                        numVertices, numCurves,
+                        periodic,
+                        widths,
+                        uvs,
+                        normals,
+                        weights, orders, knots,
+                        _flipAxis);
+}
+
 
 ghAPI void AbcWriterAddPolyMesh(Writer* instance, const char *name,
                                 const char *materialName,
