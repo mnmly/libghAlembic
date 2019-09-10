@@ -101,6 +101,8 @@ void Writer::addCurvesEx(const string& path, float* vertices, size_t totalVertic
     OFloatGeomParam::Sample widthSample = widths ? OFloatGeomParam::Sample(FloatArraySample((const float *)widths, totalVertices), kVertexScope) : OFloatGeomParam::Sample();
     OV2fGeomParam::Sample uvSample = uvs ? OV2fGeomParam::Sample(V2fArraySample((const V2f *)uvs, totalVertices), kVertexScope ) : OV2fGeomParam::Sample();
     ON3fGeomParam::Sample normalSample = normals ? ON3fGeomParam::Sample(V3fArraySample((const V3f *)normals, totalVertices), kVertexScope) : ON3fGeomParam::Sample();
+    FloatArraySample weightSample = weights ? FloatArraySample( weights, totalVertices ) : FloatArraySample();
+    
     OCurvesSchema::Sample curves_sample(
                                         V3fArraySample( ( const V3f * ) vertices, totalVertices ),
                                         Int32ArraySample( numVertices, numCurves),
@@ -110,7 +112,7 @@ void Writer::addCurvesEx(const string& path, float* vertices, size_t totalVertic
                                         uvSample,
                                         normalSample,
                                         kBsplineBasis,
-                                        FloatArraySample( weights, totalVertices ),
+                                        weightSample,
                                         UcharArraySample( orders, numCurves ),
                                         FloatArraySample( knots, numKnots ));
     schema.set(curves_sample);
