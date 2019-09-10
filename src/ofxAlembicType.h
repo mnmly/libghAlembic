@@ -14,16 +14,16 @@ namespace ofxAlembic
 {
     struct Mesh {
         
-        int numVertices;
-        int numNormals;
-        int numUvs;
-        int numFaces;
+        size_t numVertices;
+        size_t numNormals;
+        size_t numUvs;
+        size_t numFaces;
         
         string name;
         
-        vector<Imath::Vec3<float>> vertices;
-        vector<Imath::Vec3<float>> normals;
-        vector<Imath::Vec2<float>> uvs;
+        vector<Imath::V3f> vertices;
+        vector<Imath::V3f> normals;
+        vector<Imath::V2f> uvs;
         vector<Alembic::Abc::int32_t> faces;
         vector<Alembic::Abc::int32_t> faceCounts;
         

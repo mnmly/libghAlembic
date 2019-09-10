@@ -173,25 +173,22 @@ ghAPI void AbcWriterAddPolyMesh(Writer* instance, const char *name,
     }
     mesh.numVertices = numVertices;
     
-    // Normals
-    for ( int i = 0; i < numNormals; i += 3) {
-        Imath::Vec3<float> n( normals[i], normals[i + 1], normals[i + 2]);
+    
+    // Faces && uv
+    for ( int i = 0; i < numFaces; i++) {
+        auto f = faces[i];
+        mesh.faces.push_back( faces[ i ] );
+        if (numUVs > 0) {
+            mesh.uvs.push_back(V2f(uvs[f * 2], uvs[f * 2 + 1]));
+        }
+        Imath::Vec3<float> n( normals[f * 3], normals[f * 3+ 1], normals[f * 3 + 2]);
         mesh.normals.push_back( n );
     }
-    mesh.numNormals = numNormals;
-    
-    // UVs
-    for ( int i = 0; i < numUVs; i += 2) {
-        Imath::Vec2<float> u(uvs[i], uvs[i + 1]);
-        mesh.uvs.push_back(u);
-    }
-    mesh.numUvs = numUVs;
-    
-    
-    // Faces
-    for ( int i = 0; i < numFaces; i++) {
-        mesh.faces.push_back( faces[ i ] );
-    }
+    mesh.numUvs = mesh.uvs.size() / 2;
+    mesh.numNormals = mesh.normals.size() / 3;
+
+    std::cout << mesh.uvs.size() << std::endl;
+
     for (int i = 0; i < numFaceCount; i++) {
         mesh.faceCounts.push_back(3);
     }

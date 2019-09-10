@@ -183,17 +183,22 @@ void Points::draw()
 
 void PolyMesh::get(OPolyMeshSchema &schema) const
 {
-    OV2fGeomParam::Sample uvsamp( V2fArraySample( mesh.uvs ), kFacevaryingScope );
+    
+    
+    schema.setUVSourceName("UVMap");
+    
+    OV2fGeomParam::Sample uvsamp( V2fArraySample(mesh.uvs), kFacevaryingScope );
     // indexed normals
-    ON3fGeomParam::Sample nsamp( N3fArraySample( mesh.normals), kFacevaryingScope );
+    ON3fGeomParam::Sample nsamp( N3fArraySample(mesh.normals), kFacevaryingScope );
 
-    OPolyMeshSchema::Sample mesh_samp;
-    mesh_samp.setPositions(V3fArraySample(mesh.vertices));
-    mesh_samp.setFaceIndices(Int32ArraySample(mesh.faces));
-    mesh_samp.setFaceCounts(Int32ArraySample(mesh.faceCounts));
-    mesh_samp.setNormals(nsamp);
-    mesh_samp.setUVs(uvsamp);
-    schema.set(mesh_samp);
+    OPolyMeshSchema::Sample mesh_samp(V3fArraySample(mesh.vertices),
+                                      Int32ArraySample(mesh.faces),
+                                      Int32ArraySample(mesh.faceCounts),
+                                      uvsamp, nsamp);
+    
+    // Set the sample twice
+    schema.set( mesh_samp );
+
 //
 //    if (mesh.numFaces)
 //    {
