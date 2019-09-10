@@ -79,13 +79,18 @@ void Writer::addCurves(const string& path, const Curves& curves)
 	curves.get(schema);
 }
 
-void Writer::addCurvesEx(const string& path, float* vertices, size_t totalVertices,
-                         int32_t* numVertices, size_t numCurves,
+
+// basic file operations
+#include <iostream>
+#include <fstream>
+
+void Writer::addCurvesEx(const string& path, float* vertices, int totalVertices,
+                         int* numVertices, int numCurves,
                          bool periodic,
                          float* widths,
                          float* uvs,
                          float* normals,
-                         float* weights, uint8_t* orders, float* knots,
+                         float* weights, int* orders, float* knots,
                          bool _flipAxis)
 {
     typedef OCurves Type;
@@ -93,6 +98,8 @@ void Writer::addCurvesEx(const string& path, float* vertices, size_t totalVertic
     
     Type &object = getObject<Type>(path);
     Schema &schema = object.getSchema();
+
+
     
     size_t numKnots = 0;
     for (int i = 0; i < numCurves; i++) {
@@ -102,7 +109,10 @@ void Writer::addCurvesEx(const string& path, float* vertices, size_t totalVertic
     OV2fGeomParam::Sample uvSample = uvs ? OV2fGeomParam::Sample(V2fArraySample((const V2f *)uvs, totalVertices), kVertexScope ) : OV2fGeomParam::Sample();
     ON3fGeomParam::Sample normalSample = normals ? ON3fGeomParam::Sample(V3fArraySample((const V3f *)normals, totalVertices), kVertexScope) : ON3fGeomParam::Sample();
     FloatArraySample weightSample = weights ? FloatArraySample( weights, totalVertices ) : FloatArraySample();
-    
+    vector<uint8_t> _orders;
+    for (int i = 0 ; i < numCurves;i++) {
+        _orders.push_back((uint8_t)orders[i]);
+    }
     OCurvesSchema::Sample curves_sample(
                                         V3fArraySample( ( const V3f * ) vertices, totalVertices ),
                                         Int32ArraySample( numVertices, numCurves),
@@ -113,7 +123,7 @@ void Writer::addCurvesEx(const string& path, float* vertices, size_t totalVertic
                                         normalSample,
                                         kBsplineBasis,
                                         weightSample,
-                                        UcharArraySample( orders, numCurves ),
+                                        UcharArraySample( _orders.data(), numCurves ),
                                         FloatArraySample( knots, numKnots ));
     schema.set(curves_sample);
 }
@@ -192,23 +202,77 @@ ghAPI void AbcWriterAddCurve(Writer* instance, const char* name,
 }
 
 ghAPI void AbcWriterAddCurveEx(Writer* instance, const char* name,
-                               float* vertices, size_t totalVertices,
-                               int32_t* numVertices, size_t numCurves,
+                               float* vertices, int totalVertices,
+                               int* numVertices, int numCurves,
                                bool periodic,
                                float* widths,
                                float* uvs,
                                float* normals,
-                               float* weights, uint8_t* orders, float* knots,
+                               float* weights, int* orders, float* knots,
                                bool _flipAxis) {
     
     if (_flipAxis) {
-        for (int i = 0; i < totalVertices * 3; i ++) {
+        for (int i = 0; i < totalVertices; i ++) {
             float tempY = vertices[i * 3 + 1];
             vertices[i * 3 + 1] = vertices[i * 3 + 2];
             vertices[i * 3 + 2] = -tempY;
         }
     }
-    size_t numNormals = totalVertices * 3;
+    
+    
+    
+    ofstream myfile;
+    myfile.open ("/Users/mnmly/Downloads/alembic.log");
+    myfile << "Writing this to a file.\n";
+    
+    myfile << "total verticies: " << totalVertices << endl;
+    myfile << "verticies" << endl;
+    
+    for (int i = 0; i < totalVertices; i++) {
+        myfile << vertices[i * 3] << ", " << vertices[i * 3 + 1] << ", " << vertices[i * 3 + 2] << endl;
+    }
+    
+    myfile << "num Curve" << numCurves << endl;
+    
+    
+    myfile << "weights" << endl;
+    for (int i = 0; i < totalVertices; i++) {
+        myfile << weights[i] << endl;
+    }
+   
+    myfile << "numverts" << endl;
+    
+    for (int i = 0; i < numCurves; i++) {
+        myfile << numVertices[i] << endl;;
+    }
+    
+    
+    myfile << "numverts" << endl;
+    int num_knots = 0;
+    for (int i = 0; i < numCurves; i++) {
+        myfile << numVertices[i] << endl;
+        num_knots += numVertices[i] + orders[i] - 1;
+    }
+    
+    myfile << "num knots" << num_knots << endl;
+
+    myfile << "knots" << endl;
+    for (int i = 0; i < num_knots; i++) {
+        myfile << knots[i] << endl;
+    }
+    
+    myfile << "orders" << endl;
+    
+    for (int i = 0; i < numCurves; i++) {
+        myfile << (int)orders[i] << "," << endl;;
+    }
+    
+    
+    myfile << endl;
+    
+    myfile.close();
+    
+    
     instance->addCurvesEx(name, vertices, totalVertices,
                         numVertices, numCurves,
                         periodic,

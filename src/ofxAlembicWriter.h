@@ -105,13 +105,13 @@ public:
 	void addPoints(const string& path, const Points& points);
     void addPolyMesh(const string& path, const PolyMesh& polymesh, const string& materialName = "");
 	void addCurves(const string& path, const Curves& curves);
-    void addCurvesEx(const string& path, float* vertices, size_t totalVertices,
-                     int32_t* numVertices, size_t numCurves,
+    void addCurvesEx(const string& path, float* vertices, int totalVertices,
+                     int* numVertices, int numCurves,
                      bool periodic,
                      float* widths,
                      float* uvs,
                      float* normals,
-                     float* weights, uint8_t* orders, float* knots,
+                     float* weights, int* orders, float* knots,
                      bool _flipAxis);
 
 	void addXform(const string& path, const XForm& xform);
@@ -205,11 +205,11 @@ ghAPI void AbcWriterAddPolyMesh(ofxAlembic::Writer* instance, const char *name,
 ghAPI void AbcWriterAddCurve(ofxAlembic::Writer* instance, const char* name,
 	float* vertices, int numVertices, int degree, bool periodic, bool _flipAxis);
 ghAPI void AbcWriterAddCurveEx(ofxAlembic::Writer* instance, const char* name,
-                               float* vertices, size_t totalVertices,
-                               int32_t* numVertices, size_t numCurves,
+                               float* vertices, int totalVertices,
+                               int* numVertices, int numCurves,
                                bool periodic,
                                float* widths,
                                float* uvs,
                                float* normals,
-                               float* weights, uint8_t* orders, float* knots,
+                               float* weights, int* orders, float* knots,
                                bool _flipAxis);
