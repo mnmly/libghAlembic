@@ -54,12 +54,12 @@ int main(int argc, const char * argv[]) {
             // polycurve
             float vertices[39] = {-1.327575,7.071375,0,-6.900792,6.586747,0,-3.023771,9.656056,0,0.557088,9.413742,0,0.557088,9.413742,0,1.230182,5.994425,0,1.230182,5.994425,0,-1.779935,5.401882,0,-4.100722,5.967501,0,-6.335393,5.079017,0,-6.900792,2.413565,0,-2.969924,4.755932,0,4.111024,6.10212,0};
             int totalVertices = 39 / 3;
-            int32_t numVertices[3] = {4, 2, 7};
-            size_t numCurves = 3;
+            int numVertices[3] = {4, 2, 7};
+            int numCurves = 3;
             bool periodic = false;
             
             float weights[13] = {1,1,1,1,1,1,1,1,1,1,1, 1, 1};
-            uint8_t orders[3] = {2, 1, 5};
+            int orders[3] = {2, 1, 5};
             float knots[18] = {0,0,7.064094,14.128188,14.128188,0,0,17.613125,17.613125,17.613125,17.613125,17.613125,28.79803,39.982934,39.982934,39.982934,39.982934,39.982934};
             AbcWriterAddCurveEx(writer, "/curve-ex-polycurve", vertices, totalVertices,
                                 numVertices, numCurves,
@@ -77,12 +77,12 @@ int main(int argc, const char * argv[]) {
             // polyline
             float vertices[21] = {-0.862103,1.790285,0,0.887956,2.972444,0,1.629702,1.790285,0,2.580065,2.64793,0,2.487347,3.123111,0,1.397906,2.752238,0,0.598211,1.790285,0};
             int totalVertices = 21 / 3;
-            int32_t numVertices[1] = {totalVertices};
-            size_t numCurves = 1;
+            int numVertices[1] = {totalVertices};
+            int numCurves = 1;
             bool periodic = true;
             
             float weights[7] = {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f};
-            uint8_t orders[1] = {1};
+            int orders[1] = {1};
             float knots[7] = {0,2.11192,3.507516,4.787651,5.271794,6.422632,7.673578};
             AbcWriterAddCurveEx(writer, "/curve-ex-polyline", vertices, totalVertices,
                                 numVertices, numCurves,
@@ -99,12 +99,12 @@ int main(int argc, const char * argv[]) {
             // nurb converted arc
             float vertices[24] = {0.565399,0.64617,0,-0.057114,0.856709,0,-0.64617,0.565399,0,-0.856709,-0.057114,0,-0.565399,-0.64617,0,0.057114,-0.856709,0,0.64617,-0.565399,0,0.856709,0.057114,0};
             int totalVertices = 24 / 3;
-            int32_t numVertices[1] = {totalVertices};
-            size_t numCurves = 1;
+            int numVertices[1] = {totalVertices};
+            int numCurves = 1;
             bool periodic = true;
             
             float weights[8] = {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f};
-            uint8_t orders[1] = {2};
+            int orders[1] = {2};
             float knots[9] = {0,0,0.5 * 3.1415, 0.5 * 3.1415,3.1415,3.1415,1.5 * 3.1415,1.5 * 3.1415,2.0 * 3.1415};
             AbcWriterAddCurveEx(writer, "/curve-ex-arc", vertices, totalVertices,
                                 numVertices, numCurves,
@@ -121,12 +121,12 @@ int main(int argc, const char * argv[]) {
             // deg4
             float vertices[15] = {0,0,0,1,1,0,2,0,0,3,1.97297,1.92972,4,0,0};
             int totalVertices = 15 / 3;
-            int32_t numVertices[1] = {15/3};
-            size_t numCurves = 1;
+            int numVertices[1] = {15/3};
+            int numCurves = 1;
             bool periodic = false;
             
             float weights[5] = {1.0f, 1.0f, 1.0f, 1.0f, 1.0f};
-            uint8_t orders[1] = {4};
+            int orders[1] = {4};
             float knots[8] = {0,0,0,0,5.656854,5.656854,5.656854,5.656854};
             AbcWriterAddCurveEx(writer, "/curve-ex-deg4", vertices, totalVertices,
                                 numVertices, numCurves,
@@ -143,11 +143,11 @@ int main(int argc, const char * argv[]) {
             // deg 5
             float vertices[30] = {0.006123,-3.535228,0,0.907552,-1.932689,0,1.208028,-4.307881,0,2.209615,-2.705342,0,2.896418,-2.175931,0,3.382903,-4.450965,0,4.284331,-2.748267,0,5.71517,-2.161623,0,5.672245,-4.264956,0,6.058571,-4.894525,0};
             int totalVertices = 30 / 3;
-            int32_t numVertices[1] = {30/3};
-            size_t numCurves = 1;
+            int numVertices[1] = {30/3};
+            int numCurves = 1;
             bool periodic = false;
             float widths[10] = {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f};
-            size_t numWidth = totalVertices;
+            int numWidth = totalVertices;
             float uvs[20] = {0.0f, 0.0f,
                             0.1f, 0.1f,
                             1.0f, 1.0f,
@@ -159,7 +159,7 @@ int main(int argc, const char * argv[]) {
                 1.0f, 1.0f,
                 1.0f, 1.0f
             };
-            size_t numUvs = totalVertices;
+            int numUvs = totalVertices;
             float normals[30] = {0.0f, 0.0f, 1.0f,
                                 0.0f, 0.0f, 0.0f,
                                 0.0f, 1.0f, 0.0f,
@@ -172,12 +172,12 @@ int main(int argc, const char * argv[]) {
                 0.0f, 1.0f, 0.0f
             };
             
-            size_t numNormals = totalVertices;
+            int numNormals = totalVertices;
             
             float weights[10] = {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f};
-            uint8_t orders[1] = {5};
+            int orders[1] = {5};
             float knots[14] = {0,0,0,0,0,3.126332,6.252664,9.378995,12.505327,15.631659,15.631659,15.631659,15.631659,15.631659};
-            size_t numKnots = 14;
+            int numKnots = 14;
             AbcWriterAddCurveEx(writer, "/curve-ex", vertices, totalVertices,
                                 numVertices, numCurves,
                                 periodic,
